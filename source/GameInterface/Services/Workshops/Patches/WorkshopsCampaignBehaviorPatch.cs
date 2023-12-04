@@ -21,6 +21,6 @@ internal class WorkshopsCampaignBehaviorPatch
     [HarmonyPostfix]
     static void ProduceOutputPostfix(EquipmentElement outputItem, Town town, Workshop workshop, int count, bool doNotEffectCapital)
     {
-        MessageBroker.Instance.Publish(instance, new PrepareWorkshopProduceOutput(outputItem, workshop, count));
+        MessageBroker.Instance.Publish(instance, new PrepareWorkshopProducedOutput(outputItem, workshop, count));
     } 
 }
