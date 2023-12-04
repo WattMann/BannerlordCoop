@@ -8,7 +8,7 @@ using GameInterface.Services.Workshops.Messages.Events;
 
 namespace GameInterface.Services.Characters.Patches;
 
-[HarmonyPatch(typeof(TaleWorlds.CampaignSystem.CampaignBehaviors.WorkshopsCampaignBehavior))]
+[HarmonyPatch(typeof(WorkshopsCampaignBehavior))]
 internal class WorkshopsCampaignBehaviorPatch
 {
     private static readonly WorkshopsCampaignBehavior instance = new();

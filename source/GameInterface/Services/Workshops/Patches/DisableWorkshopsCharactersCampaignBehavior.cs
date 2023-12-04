@@ -1,6 +1,5 @@
 ﻿using HarmonyLib;
 using SandBox.CampaignBehaviors;
-using TaleWorlds.CampaignSystem.CampaignBehaviors;
 
 namespace GameInterface.Services.Characters.Patches;
 

@@ -7,7 +7,7 @@ using GameInterface.Services.Workshops.Messages.Events;
 namespace GameInterface.Services.Workshops.Handlers.Commands
 {
     /// <summary>
-    /// Handles PrepareWorkshopProduceOutput
+    /// Handles PrepareWorkshopProduceOutput and publishes WorkshopProduceOutput
     /// </summary>
     internal class PrepareWorkshopProduceOutputHandler : IHandler
     {
@@ -27,7 +27,7 @@ namespace GameInterface.Services.Workshops.Handlers.Commands
             this.messageBroker.Unsubscribe<PrepareWorkshopProduceOutput>(Handle);
         }
 
-        public void Handle(MessagePayload<PrepareWorkshopProduceOutput> payload)
+        private void Handle(MessagePayload<PrepareWorkshopProduceOutput> payload)
         {
             var package_output = binaryPackageFactory.GetBinaryPackage<EquipmentElementBinaryPackage>(payload.What.Output);
             var package_workshop = binaryPackageFactory.GetBinaryPackage<EquipmentElementBinaryPackage>(payload.What.Output);

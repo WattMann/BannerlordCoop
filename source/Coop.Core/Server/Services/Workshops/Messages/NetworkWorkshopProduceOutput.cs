@@ -3,7 +3,10 @@ using ProtoBuf;
 
 namespace Coop.Core.Server.Services.Workshops.Messages
 {
-    internal class NetworkWorkshopProduceOutput : IMessage
+    /// <summary>
+    /// Sent to the client when a workshop on the server produces output
+    /// </summary>
+    public class NetworkWorkshopProduceOutput : IMessage
     {
         [ProtoMember(1)]
         public byte[] Output { get; }

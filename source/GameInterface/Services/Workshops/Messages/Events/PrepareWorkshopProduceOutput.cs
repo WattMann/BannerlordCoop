@@ -5,7 +5,7 @@ using TaleWorlds.Core;
 namespace GameInterface.Services.Workshops.Messages.Events
 {
     /// <summary>
-    /// Prepares and publishes WorkshopProduceOutput
+    /// Prepares WorkshopProduceOutput
     /// </summary>
     internal record PrepareWorkshopProduceOutput : IEvent
     {
