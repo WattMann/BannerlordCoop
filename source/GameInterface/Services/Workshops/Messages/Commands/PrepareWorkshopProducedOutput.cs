@@ -12,12 +12,14 @@ namespace GameInterface.Services.Workshops.Messages.Commands
         public EquipmentElement Output { get; }
         public Workshop Workshop { get; }
         public int Count { get; }
+        public bool AffectCapital { get; }
 
-        public PrepareWorkshopProducedOutput(EquipmentElement output, Workshop workshop, int count)
+        public PrepareWorkshopProducedOutput(EquipmentElement output, Workshop workshop, int count, bool affectCapital)
         {
             Output = output;
             Workshop = workshop;
             Count = count;
+            AffectCapital = affectCapital;
         }
     }
 }

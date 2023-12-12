@@ -24,7 +24,7 @@ namespace Coop.Core.Server.Services.Workshops.Handlers
 
         private void Handle(MessagePayload<WorkshopProducedOutput> payload)
         {
-            network.SendAll(new NetworkWorkshopProduceOutput(payload.What.Output, payload.What.Workshop, payload.What.Count));
+            network.SendAll(new NetworkWorkshopProduceOutput(payload.What.Output, payload.What.Workshop, payload.What.Count, payload.What.AffectCapital));
         }
 
     }

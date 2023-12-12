@@ -17,11 +17,15 @@ namespace Coop.Core.Server.Services.Workshops.Messages
         [ProtoMember(3)]
         public int Count { get; }
 
-        public NetworkWorkshopProduceOutput(byte[] output, byte[] workshop, int count)
+        [ProtoMember(4)]
+        public bool AffectCapital { get; }
+
+        public NetworkWorkshopProduceOutput(byte[] output, byte[] workshop, int count, bool affectCapital)
         {
             Output = output;
             Workshop = workshop;
             Count = count;
+            AffectCapital = affectCapital;
         }
     }
 }

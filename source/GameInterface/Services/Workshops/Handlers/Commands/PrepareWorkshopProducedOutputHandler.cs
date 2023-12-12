@@ -37,7 +37,8 @@ namespace GameInterface.Services.Workshops.Handlers.Commands
                 new WorkshopProducedOutput(
                     BinaryFormatterSerializer.Serialize(package_output),
                     BinaryFormatterSerializer.Serialize(package_workshop),
-                    payload.What.Count)
+                    payload.What.Count,
+                    payload.What.AffectCapital)
                 );
         }
     }

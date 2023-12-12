@@ -25,7 +25,7 @@ namespace Coop.Core.Client.Services.Workshops.Handlers
 
         private void Handle(MessagePayload<NetworkWorkshopProduceOutput> payload)
         {
-            var msg = new WorkshopProduceOutput(payload.What.Output, payload.What.Workshop, payload.What.Count);
+            var msg = new WorkshopProduceOutput(payload.What.Output, payload.What.Workshop, payload.What.Count, payload.What.AffectCapital);
             messageBroker.Publish(this, msg);
         }
     }

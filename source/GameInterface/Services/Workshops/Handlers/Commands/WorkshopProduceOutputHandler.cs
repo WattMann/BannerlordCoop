@@ -3,6 +3,8 @@ using Common.Serialization;
 using GameInterface.Serialization;
 using GameInterface.Serialization.External;
 using GameInterface.Services.Workshops.Messages.Commands;
+using System.Reflection;
+using TaleWorlds.CampaignSystem.CampaignBehaviors;
 using TaleWorlds.CampaignSystem.Settlements.Workshops;
 using TaleWorlds.Core;
 
@@ -10,7 +12,7 @@ namespace GameInterface.Services.Workshops.Handlers.Commands
 {
     /// <summary>
     /// Handles WorkshopProduceOutput.
-    /// Updates the town's item roster.
+    /// Produces workshop output.
     /// </summary>
     internal class WorkshopProduceOutputHandler : IHandler
     {
@@ -38,7 +40,14 @@ namespace GameInterface.Services.Workshops.Handlers.Commands
             var package_output = BinaryFormatterSerializer.Deserialize<EquipmentElementBinaryPackage>(payload.What.Output);
             var output = package_output.Unpack<EquipmentElement>(binaryPackageFactory);
 
-            workshop.Settlement.ItemRoster.AddToCounts(output, payload.What.Count);
+            var parameters = new object[5];
+            parameters[0] = output;
+            parameters[1] = workshop.Settlement.Town;
+            parameters[2] = workshop;
+            parameters[3] = payload.What.Count;
+            parameters[4] = !payload.What.AffectCapital;
+
+            typeof(WorkshopsCampaignBehavior).GetMethod("ProduceOutput", BindingFlags.NonPublic | BindingFlags.Static).Invoke(null, parameters);
         }
     }
 }
