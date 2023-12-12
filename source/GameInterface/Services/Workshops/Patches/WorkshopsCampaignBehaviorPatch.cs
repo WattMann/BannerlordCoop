@@ -4,7 +4,8 @@ using TaleWorlds.CampaignSystem.Settlements.Workshops;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
 using Common.Messaging;
-using GameInterface.Services.Workshops.Messages.Commands;
+using GameInterface.Services.Workshops.Messages.Commands.Internal;
+using Common.Logging;
 
 namespace GameInterface.Services.Characters.Patches;
 
@@ -23,6 +24,7 @@ internal class WorkshopsCampaignBehaviorPatch
     {
         if (ModInformation.IsClient) 
             return;
-        MessageBroker.Instance.Publish(instance, new PrepareWorkshopProducedOutput(outputItem, workshop, count, doNotEffectCapital));
+
+        MessageBroker.Instance.Publish(instance, new PrepareWorkshopProducedOutput(outputItem, workshop, count, !doNotEffectCapital));
     } 
 }

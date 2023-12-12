@@ -2,13 +2,13 @@
 using Common.Serialization;
 using GameInterface.Serialization;
 using GameInterface.Serialization.External;
-using GameInterface.Services.Workshops.Messages.Commands;
+using GameInterface.Services.Workshops.Messages.Commands.Internal;
 using GameInterface.Services.Workshops.Messages.Events;
 
-namespace GameInterface.Services.Workshops.Handlers.Commands
+namespace GameInterface.Services.Workshops.Handlers.Commands.Internal
 {
     /// <summary>
-    /// Handles PrepareWorkshopProducedOutput and publishes WorkshopProducedOutput
+    /// Handles PrepareWorkshopProducedOutput and publishes WorkshopProducedOutput on server.
     /// </summary>
     internal class PrepareWorkshopProducedOutputHandler : IHandler
     {
@@ -17,6 +17,7 @@ namespace GameInterface.Services.Workshops.Handlers.Commands
 
         public PrepareWorkshopProducedOutputHandler(IMessageBroker messageBroker, IBinaryPackageFactory binaryPackageFactory)
         {
+            if (ModInformation.IsClient) return;
             this.messageBroker = messageBroker;
             this.binaryPackageFactory = binaryPackageFactory;
 

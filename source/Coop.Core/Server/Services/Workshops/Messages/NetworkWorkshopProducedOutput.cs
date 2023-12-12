@@ -4,9 +4,9 @@ using ProtoBuf;
 namespace Coop.Core.Server.Services.Workshops.Messages
 {
     /// <summary>
-    /// Sent to the client when a workshop on the server produces output
+    /// Should be sent to the client when a workshop on the server produces an output.
     /// </summary>
-    public class NetworkWorkshopProduceOutput : IMessage
+    public class NetworkWorkshopProducedOutput : IMessage
     {
         [ProtoMember(1)]
         public byte[] Output { get; }
@@ -20,7 +20,7 @@ namespace Coop.Core.Server.Services.Workshops.Messages
         [ProtoMember(4)]
         public bool AffectCapital { get; }
 
-        public NetworkWorkshopProduceOutput(byte[] output, byte[] workshop, int count, bool affectCapital)
+        public NetworkWorkshopProducedOutput(byte[] output, byte[] workshop, int count, bool affectCapital)
         {
             Output = output;
             Workshop = workshop;

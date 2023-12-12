@@ -2,37 +2,39 @@
 using Common.Serialization;
 using GameInterface.Serialization;
 using GameInterface.Serialization.External;
-using GameInterface.Services.Workshops.Messages.Commands;
+using GameInterface.Services.Workshops.Messages.Events;
 using System.Reflection;
 using TaleWorlds.CampaignSystem.CampaignBehaviors;
 using TaleWorlds.CampaignSystem.Settlements.Workshops;
 using TaleWorlds.Core;
 
-namespace GameInterface.Services.Workshops.Handlers.Commands
+namespace GameInterface.Services.Workshops.Handlers.Events
 {
     /// <summary>
-    /// Handles WorkshopProduceOutput.
+    /// Handles WorkshopProducedOutput on client.
     /// Produces workshop output.
     /// </summary>
-    internal class WorkshopProduceOutputHandler : IHandler
+    internal class WorkshopProducedOutputHandler : IHandler
     {
         private readonly IMessageBroker messageBroker;
         private readonly IBinaryPackageFactory binaryPackageFactory;
 
-        public WorkshopProduceOutputHandler(IMessageBroker messageBroker, IBinaryPackageFactory binaryPackageFactory)
+        public WorkshopProducedOutputHandler(IMessageBroker messageBroker, IBinaryPackageFactory binaryPackageFactory)
         {
+            if (ModInformation.IsServer) return;
+
             this.messageBroker = messageBroker;
             this.binaryPackageFactory = binaryPackageFactory;
 
-            messageBroker.Subscribe<WorkshopProduceOutput>(Handle);
+            messageBroker.Subscribe<WorkshopProducedOutput>(Handle);
         }
 
         public void Dispose()
         {
-            messageBroker.Unsubscribe<WorkshopProduceOutput>(Handle);
+            messageBroker.Unsubscribe<WorkshopProducedOutput>(Handle);
         }
 
-        private void Handle(MessagePayload<WorkshopProduceOutput> payload)
+        private void Handle(MessagePayload<WorkshopProducedOutput> payload)
         {
             var package_workshop = BinaryFormatterSerializer.Deserialize<WorkshopBinaryPackage>(payload.What.Workshop);
             var workshop = package_workshop.Unpack<Workshop>(binaryPackageFactory);

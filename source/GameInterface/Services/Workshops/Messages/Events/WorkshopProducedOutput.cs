@@ -3,8 +3,7 @@
 namespace GameInterface.Services.Workshops.Messages.Events
 {
     /// <summary>
-    /// Should be called when a workshop has produced an output.
-    /// Server only.
+    /// Should be called when a workshop has produces an output.
     /// </summary>
     public record WorkshopProducedOutput : IEvent
     {
