@@ -3,7 +3,7 @@
 namespace GameInterface.Services.Workshops.Messages.Events
 {
     /// <summary>
-    /// Server-side, called when a workshop produced output
+    /// Server-side, called when a workshop has produced an output
     /// </summary>
     public record WorkshopProducedOutput : IEvent
     {

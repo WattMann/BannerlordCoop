@@ -4,7 +4,7 @@ using TaleWorlds.CampaignSystem.Settlements.Workshops;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
 using Common.Messaging;
-using GameInterface.Services.Workshops.Messages.Events;
+using GameInterface.Services.Workshops.Messages.Commands;
 
 namespace GameInterface.Services.Characters.Patches;
 

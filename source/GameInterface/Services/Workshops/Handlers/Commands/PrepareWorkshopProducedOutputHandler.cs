@@ -2,6 +2,7 @@
 using Common.Serialization;
 using GameInterface.Serialization;
 using GameInterface.Serialization.External;
+using GameInterface.Services.Workshops.Messages.Commands;
 using GameInterface.Services.Workshops.Messages.Events;
 
 namespace GameInterface.Services.Workshops.Handlers.Commands
@@ -30,7 +31,7 @@ namespace GameInterface.Services.Workshops.Handlers.Commands
         private void Handle(MessagePayload<PrepareWorkshopProducedOutput> payload)
         {
             var package_output = binaryPackageFactory.GetBinaryPackage<EquipmentElementBinaryPackage>(payload.What.Output);
-            var package_workshop = binaryPackageFactory.GetBinaryPackage<EquipmentElementBinaryPackage>(payload.What.Workshop);
+            var package_workshop = binaryPackageFactory.GetBinaryPackage<WorkshopBinaryPackage>(payload.What.Workshop);
 
             messageBroker.Publish(this,
                 new WorkshopProducedOutput(

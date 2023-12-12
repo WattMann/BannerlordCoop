@@ -1,11 +1,11 @@
 ﻿using Common.Messaging;
 
-namespace GameInterface.Services.Workshops.Messages.Events
+namespace GameInterface.Services.Workshops.Messages.Commands
 {
     /// <summary>
-    /// Client-side, called when a workshop should produce output
+    /// Produces workshop output.
     /// </summary>
-    public record WorkshopProduceOutput : IEvent
+    public record WorkshopProduceOutput : ICommand
     {
         public byte[] Output { get; }
         public byte[] Workshop { get; }

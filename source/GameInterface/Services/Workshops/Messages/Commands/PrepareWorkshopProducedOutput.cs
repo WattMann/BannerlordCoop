@@ -2,10 +2,10 @@
 using TaleWorlds.CampaignSystem.Settlements.Workshops;
 using TaleWorlds.Core;
 
-namespace GameInterface.Services.Workshops.Messages.Events
+namespace GameInterface.Services.Workshops.Messages.Commands
 {
     /// <summary>
-    /// Prepares WorkshopProducedOutput
+    /// Should prepare and publish WorkshopProducedOutput
     /// </summary>
     internal record PrepareWorkshopProducedOutput : IEvent
     {
